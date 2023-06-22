@@ -1,0 +1,27 @@
+
+
+  
+  .logo {
+    font-family: 'Bebas Neue', cursive;
+  }
+  
+  .bannerText {
+    top: 30vh;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #fff;
+  }
+  
+  .swiper-pagination-bullet {
+    background: transparent;
+    border: 2px solid #fff;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background: #fff;
+  }
