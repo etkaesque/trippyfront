@@ -2,9 +2,12 @@ import Header from "../../components/Header";
 import styles from "./index.module.css";
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { redirect } from 'next/navigation'
+import { useState } from "react";
+import { Router, useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     destination_city: "",
     destination_country: "",
@@ -30,6 +33,7 @@ export default function Home() {
   }
 
   async function handleSumbit(event: any) {
+    event.preventDefault(); 
     console.log("Sending a form to server");
 
     try {
@@ -37,8 +41,11 @@ export default function Home() {
         "http://localhost:8080/addTrip",
         formData
       );
-      console.log(formData);
-      console.log(response);
+
+      if (response) {
+        router.push('/');
+      }
+
     } catch (error) {
       console.log("Failed to save data to database, error: ", error);
     }
