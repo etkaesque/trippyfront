@@ -1,9 +1,30 @@
 import Header from "../components/Header"
 import styles from "./index.module.css"
 import Card from "./components/card/Card"
+import axios from "axios"
 
-export default function Home() {
+type tripType = {
+
+  destination_city: string,
+  id: string,
+  destination_country: string,
+  duration: string,
+  imageUrl: string,
+  free_food: boolean
+  price: number,
+  date: Date,
+  date_uploaded: Date;
+  description: string,
+  travel_by: string,
+
+}
+
+export default function Home({data}: {data: tripType[]}) {
+
+
+
   return (
+
 
     <div className={styles.imageBackground}>
        <Header></Header>
@@ -12,8 +33,17 @@ export default function Home() {
 
           <section className="bg-zinc-50 w-4/5 mx-auto flex flex-wrap">
 
-              
-            <Card/>
+            {data && data.map((trip) => {
+
+              return (
+                <Card trip={trip} key={trip.id}/>
+              )
+
+
+            })}
+
+
+          
 
 
 
@@ -27,4 +57,15 @@ export default function Home() {
 
     
   )
+}
+
+export async function getServerSideProps(){
+
+  const response = await axios.get("http://localhost:8080/trips")
+  const data = response.data.trips
+  console.log(data)
+
+
+  return {props: {data} }
+
 }
