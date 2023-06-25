@@ -1,6 +1,6 @@
 .imageBackground {
     background-image: url("../../public/images/nature.jpg");
-    height: 100vh;
+    min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     

@@ -31,7 +31,7 @@ export default function Home({data}: {data: tripType[]}) {
 
        <main className="w-screen mt-8">
 
-          <section className="bg-zinc-50 w-4/5 p-6 mb-4 mx-auto flex flex-wrap">
+          <section className="bg-zinc-50 w-4/5 p-6 mb-4 mx-auto flex flex-wrap justify-center">
 
             {data && data.map((trip) => {
 

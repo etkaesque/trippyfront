@@ -1,17 +1,23 @@
 import React from "react";
 import "./Header.module.css";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+
+
+    
+  const [token, setToken] = useState<string | null>(null)
+
+  useEffect(()=>{
+    setToken(localStorage.getItem("jwt_token"))
+  },[])
+
   return (
     <>
       <section>
         <div className="flex items-center bg-transparent justify-between py-7 px-5 relative w-full z-10 hover:bg-white group transition duration-500 ease-in-out">
-          <button className="flex flex-col justify-between w-7 h-5 appearance-none">
-            <span className="w-full h-0.5 bg-black group-hover:bg-black transition duration-500 ease-in-out"></span>
-            <span className="w-full h-0.5 bg-black group-hover:bg-black transition duration-500 ease-in-out"></span>
-            <span className="w-full h-0.5 bg-black group-hover:bg-black transition duration-500 ease-in-out"></span>
-          </button>
+        
           <Link rel="" href={`/`}> 
           <div className="logo text-black text-3xl tracking-widest group-hover:text-black  transition duration-500 ease-in-out">
             Trips
@@ -19,7 +25,7 @@ export default function Header() {
           </Link>
          
           <div className="flex text-black group-hover:text-black transition duration-500 ease-in-out">
-            <Link href={`/login`} className="appearance-none mr-6 hidden md:block">
+            <Link href={`/login`} className="appearance-none mr-6">
               <svg
                 width="24px"
                 height="24px"
@@ -47,6 +53,7 @@ export default function Header() {
                 </g>
               </svg>
             </Link>
+
             <Link href={"/insertTrip"} className="appearance-none mr-6">
             <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 
@@ -70,7 +77,9 @@ export default function Header() {
 
 </svg>
             </Link>
-            <button className="appearance-none">
+
+            {token && 
+            <Link href={"/booked"} className="appearance-none">
               <svg
                 className=""
                 width="24px"
@@ -90,7 +99,9 @@ export default function Header() {
                   <path d="M0.2,11 L9.5,29 L26.4,29 L35.7,11 L0.2,11 Z M24.5,26 L11.5,26 L4.8,14 L31.2,14 L24.5,26 L24.5,26 Z M18.5,3 C22.7,3 25.5,6.3 25.5,8.5 L28.5,8.5 C28.5,4.5 24.2,0 18.5,0 C12.8,0 8.5,4.5 8.5,8.5 L11.5,8.5 C11.5,6.3 14.3,3 18.5,3 Z"></path>{" "}
                 </g>{" "}
               </svg>
-            </button>
+            </Link>
+}
+
           </div>
         </div>
 

@@ -34,13 +34,13 @@ export default function Card({ trip }: CardProps) {
   return (
     <>
        
-      <div className="relative mx-auto w-full max-w-xs pt-6">
+      <div className="relative mx-auto w-full max-w-xs pt-6 flex-col h-full">
         <Link
           href={`trip/${trip.id}`}
-          className="relative inline-block w-full transform transition-transform duration-300 ease-in-out"
+          className="relative inline-block w-full transform transition-transform duration-300 ease-in-out flex-grow"
         >
           <div className="rounded-lg">
-            <div className="relative flex h-60 justify-center overflow-hidden rounded-lg">
+            <div className="relative flex h-60  justify-center overflow-hidden rounded-lg">
               <div className="w-full transform transition-transform duration-500 ease-in-out hover:scale-110">
                 <img src={trip.imageUrl} alt="" />
               </div>
