@@ -155,7 +155,7 @@ export default function Home() {
       <main className="w-screen mt-8">
 
         {token && userData ? (
-        <div className="flex flex-col content-center items-center justify-center m-6 gap-x-8">
+        <div className="flex flex-col content-center items-center justify-center m-6 gap-x-8 bg-zinc-50 p-5 ">
           <div>
 
             <h1 className="text-2xl" >Welcome! {<span className="text-green-500">{userData.name}</span>}</h1>
