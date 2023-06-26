@@ -31,7 +31,10 @@ export default function Home({data}: {data: tripType[]}) {
 
        <main className="w-screen mt-8">
 
+
           <section className="bg-zinc-50 w-4/5 p-6 mb-4 mx-auto flex flex-wrap justify-center">
+
+              <h1 className="w-full text-center text-2xl">Find a trip of your dreams</h1>
 
             {data && data.map((trip) => {
 

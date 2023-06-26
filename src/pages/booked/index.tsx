@@ -2,6 +2,7 @@ import Header from "@/components/Header"
 import Card from "../components/card/Card"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import styles from "./index.module.css"
 import Link from "next/link"
 
 type tripType = {
@@ -60,7 +61,7 @@ export default function Page() {
 
   
     return (
-        <>
+        <div  className={styles.imageBackground}>
         <Header/>
 
         <main className="w-screen mt-8">
@@ -70,7 +71,7 @@ export default function Page() {
 
             {data && data.length > 0 ? (
 
-                <div className=" flex flex-wrap w-full flex flex-row h-full"> 
+                <div className=" flex flex-wrap w-full flex-row h-full"> 
                     <h1 className="w-full text-2xl">Your booked trips</h1>
                     {
                          
@@ -103,7 +104,7 @@ export default function Page() {
         </main>
 
 
-        </>
+        </div>
     )
 }
 

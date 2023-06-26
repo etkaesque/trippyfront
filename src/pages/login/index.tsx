@@ -1,15 +1,32 @@
+import styles from "./index.module.css"
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 
 
 
 export default function Home() {
-  
+    
+  const router = useRouter()
   const [token, setToken] = useState<string | null>("")
   const [userData, setUserData] =  useState<{ name: string } | null>(null)
+  const [serverResponse, setServerResponse] =  useState<string>("")
+  const [isLogin, setIslogin] = useState(false)
+  const [loginUser, setLoginUser] = useState({
+    email:"",
+    password:""
+  })
+  const [newUser, setNewUser] = useState({
+    name: "",
+    email:"",
+    password:"",
+    confirm_password:"",
+  })
+
+
+
+
 
   useEffect(()=>{
     setToken(localStorage.getItem("jwt_token"))
@@ -37,20 +54,6 @@ export default function Home() {
 
   },[token])
 
-  const router = useRouter()
-
-  const [isLogin, setIslogin] = useState(false)
-
-  const [loginUser, setLoginUser] = useState({
-    email:"",
-    password:""
-  })
-
-  const [newUser, setNewUser] = useState({
-    name: "",
-    email:"",
-    password:""
-  })
 
   const handleLoginUser = (event : any) => {
     
@@ -104,8 +107,9 @@ export default function Home() {
  
 
 
-    } catch (error) {
-      console.log("could not connect to server: ", error)
+    } catch (error : any) {
+      setServerResponse(error.response.data.response)
+      console.log("could not validate new user: ", error)
     }
 
 
@@ -142,6 +146,7 @@ export default function Home() {
     router.reload()
   }
 
+    console.log(serverResponse)
 
   return (
     <div className={styles.imageBackground}>
@@ -169,7 +174,7 @@ export default function Home() {
 
               
             {isLogin ? (
-            <section className="bg-zinc-50 w-4/5 p-5 mx-auto flex flex-col justify-center">
+            <section className="bg-zinc-50 w-4/5 h-screen p-5 mx-auto flex flex-col justify-center">
 
               <div className="flex flex-col content-center items-center justify-center m-6">
               <h1 className="text-2xl ">Register</h1>
@@ -246,6 +251,7 @@ export default function Home() {
                     </label>
                     <input
                       onChange={handleChange}
+                      value={newUser.confirm_password}
                       type="password"
                       id="confirm_password"
                       name="confirm_password"
@@ -263,12 +269,14 @@ export default function Home() {
                   </button>
                 </form>
 
+                <div> {serverResponse && (<p className={styles.serverRes}>{serverResponse}</p>)}</div>
+
 
               </div>
 
             </section>
             ) : (
-            <section className="bg-zinc-50 w-4/5 p-5 mx-auto flex flex-col justify-center">
+            <section className="bg-zinc-50 w-4/5 h-screen p-5 mx-auto flex flex-col justify-center">
 
             <div className="flex flex-col content-center items-center justify-center m-6">
             <h1 className="text-2xl ">Log In</h1>
@@ -322,6 +330,8 @@ export default function Home() {
             >
               Submit
             </button>
+            
+        
             </form>
 
 

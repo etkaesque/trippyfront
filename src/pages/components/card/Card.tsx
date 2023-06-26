@@ -34,15 +34,15 @@ export default function Card({ trip }: CardProps) {
   return (
     <>
        
-      <div className="relative mx-auto w-full max-w-xs pt-6 flex-col h-full">
+      <div className="relative mx-auto w-full max-w-xs pt-6 h flex-col max-h-full">
         <Link
           href={`trip/${trip.id}`}
-          className="relative inline-block w-full transform transition-transform duration-300 ease-in-out flex-grow"
+          className="relative  w-full flex flex-col h-full transform transition-transform duration-300 ease-in-out flex-grow"
         >
-          <div className="rounded-lg">
+          <div className="rounded-lg h-full flex flex-col">
             <div className="relative flex h-60  justify-center overflow-hidden rounded-lg">
               <div className="w-full transform transition-transform duration-500 ease-in-out hover:scale-110">
-                <img src={trip.imageUrl} alt="" />
+                <img src={trip.imageUrl} alt="" className="w-full h-full"/>
               </div>
 
               {timeDifferenceInHours < 12 &&  <span className="absolute left-0 top-0 z-10 ml-3 mt-3 inline-flex select-none rounded-lg bg-red-500 px-3 py-2 text-sm font-medium text-white">
@@ -53,7 +53,7 @@ export default function Card({ trip }: CardProps) {
              
             </div>
 
-            <div className="">
+            <div className="flex flex-col flex-grow">
               <div className="mt-4 grid grid-cols-2">
                 <div className="flex items-center">
                   <div className="relative">
@@ -80,7 +80,7 @@ export default function Card({ trip }: CardProps) {
                 </div>
               </div>
 
-              <div className="mt-2 border-t border-gray-200 pt-3">
+              <div className="mt-2 flex-grow border-t border-gray-200 pt-3">
                 {trip.description}
               </div>
 

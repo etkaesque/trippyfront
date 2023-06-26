@@ -57,9 +57,10 @@ export default function Home() {
       <Header></Header>
 
       <main className="w-screen mt-8">
-        <section className="bg-zinc-50 w-4/5 p-5 mx-auto flex flex-wrap">
+        <section className="bg-zinc-50 w-4/5 p-5 mx-auto h-full flex flex-wrap">
+          <h1 className="w-full text-center text-2xl mb-6">Add a New Trip</h1>
           <form
-            className="max-w-3xl mx-auto grid justify-around gap-x-28 grid-cols-2 p-2"
+            className="max-w-3xl mx-auto grid justify-around gap-x-28 lg:grid-cols-2 p-2 sm:grid-cols-1"
             onSubmit={handleSumbit}
           >
             <div className="col-start-1 col-end-2 mb-6">
@@ -214,16 +215,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="col-start-1 col-end-2 mb-6 grid justify-center">
-              <button
-                type="submit"
-                className="text-white bg-green-400 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Publish
-              </button>
-            </div>
-
-            <div className="col-start-2 col-end-3 row-start-1 row-end-5 flex flex-col">
+            <div className="mb-5 lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-5 flex flex-col sm:grid-col-start-1 sm:grid-col-end-2">
               <label
                 htmlFor="description"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -246,6 +238,19 @@ export default function Home() {
                 rows="30"
               ></textarea>
             </div>
+
+
+
+            <div className="col-start-1 col-end-2 mb-6 grid justify-center">
+              <button
+                type="submit"
+                className="text-white bg-green-400 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Publish
+              </button>
+            </div>
+
+       
           </form>
         </section>
       </main>

@@ -42,6 +42,13 @@ export default function Trip() {
         },
       });
 
+      if(response.status === 401) {
+        localStorage.removeItem("jwt_token");
+        localStorage.removeItem("jwt_refresh_token");
+        setToken(null)
+        router.reload()
+      }
+
       const isBooked = response.data.user.booked_trips.includes(router.query.id)
       setBooked(isBooked);
  
@@ -121,7 +128,7 @@ export default function Trip() {
     getTrip();
   }, []);
 
-
+  console.log("currently token is", token)
 
   return (
     <div>
@@ -143,7 +150,7 @@ export default function Trip() {
                   {trip.destination_city}
                 </h1>
                 <div className="flex mb-4">
-                  <div className="flex  gap-x-1.5 items-center text-gray-800 xl:flex-row xl:items-center">
+                  <div className="lg:flex  gap-x-1.5 items-center text-gray-800 lg:flex-row lg:items-center sm:grid sm:grid-cols-2">
                     {trip.travel_by === "train" ? (
                       <div className="train flex gap-x-1.5	">
                         <svg
