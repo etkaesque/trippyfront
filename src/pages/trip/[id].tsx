@@ -36,24 +36,37 @@ export default function Trip() {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await axios.get("http://localhost:8080/user", {
-        headers: {
-          authorization: token,
-        },
-      });
 
-      if(response.status === 401) {
+      try {
+
+        const response = await axios.get("http://localhost:8080/user", {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        const isBooked = response.data.user.booked_trips.includes(router.query.id)
+        setBooked(isBooked);
+   
+
+      } catch (error) {
+
+            
+
+
         localStorage.removeItem("jwt_token");
         localStorage.removeItem("jwt_refresh_token");
         setToken(null)
         router.reload()
+      
+
+
       }
 
-      const isBooked = response.data.user.booked_trips.includes(router.query.id)
-      setBooked(isBooked);
- 
 
-      console.log("when you come to id page", response.data.user.booked_trips);
+
+
+
     };
 
     if (token) {

@@ -3,6 +3,7 @@ import Card from "../components/card/Card"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import styles from "./index.module.css"
+import { useRouter } from "next/router"
 import Link from "next/link"
 
 type tripType = {
@@ -25,12 +26,16 @@ type tripType = {
 
 export default function Page() {
 
+    const router = useRouter()
     const [data, setData] = useState<tripType[]>()
 
 
 
     useEffect(()=>{
 
+        try {
+
+            
         const getUserTrips = async () => {
 
                             
@@ -53,6 +58,14 @@ export default function Page() {
         }
 
         getUserTrips()
+
+        } catch (error) {
+
+            console.log("something went wrong", error)
+            
+
+        }
+
 
     },[])
 

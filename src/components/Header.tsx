@@ -11,6 +11,7 @@ export default function Header() {
 
   useEffect(()=>{
     setToken(localStorage.getItem("jwt_token"))
+    console.log("token", localStorage.getItem("jwt_token"))
   },[])
 
   return (
