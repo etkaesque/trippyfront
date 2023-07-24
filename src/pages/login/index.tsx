@@ -36,7 +36,7 @@ export default function Home() {
     
    
     const getUser = async () => {
-      const response = await axios.get("http://localhost:8080/user",
+      const response = await axios.get("https://trippy-jt62.onrender.com/user",
       {
         headers: {
           authorization: token
@@ -76,7 +76,7 @@ export default function Home() {
 
     try {
       
-    const response = await axios.post("http://localhost:8080/login", loginUser)
+    const response = await axios.post("https://trippy-jt62.onrender.com/login", loginUser)
   
     localStorage.setItem("jwt_token", response.data.jwt_token)
     localStorage.setItem("jwt_refresh_token", response.data.jwt_refresh_token)
@@ -98,7 +98,7 @@ export default function Home() {
 
     try {
       
-    const response = await axios.post("http://localhost:8080/signUp", newUser)
+    const response = await axios.post("https://trippy-jt62.onrender.com/signUp", newUser)
   
     localStorage.setItem("jwt_token", response.data.jwt_token)
     localStorage.setItem("jwt_refresh_token", response.data.jwt_refresh_token)

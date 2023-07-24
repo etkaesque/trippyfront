@@ -39,7 +39,7 @@ export default function Trip() {
 
       try {
 
-        const response = await axios.get("http://localhost:8080/user", {
+        const response = await axios.get("https://trippy-jt62.onrender.com/user", {
           headers: {
             authorization: token,
           },
@@ -80,7 +80,7 @@ export default function Trip() {
 
   const deleteFromDb = async () => {
     const response = await axios.delete(
-      `http://localhost:8080/deleteTrip/${router.query.id}`
+      `https://trippy-jt62.onrender.com/deleteTrip/${router.query.id}`
     );
 
     if ((response.status = 200)) {
@@ -94,7 +94,7 @@ export default function Trip() {
     if (booked) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/removeUserTrip/${router.query.id}`,
+          `https://trippy-jt62.onrender.com/removeUserTrip/${router.query.id}`,
           {
             headers: {
               authorization: token,
@@ -109,7 +109,7 @@ export default function Trip() {
     } else {
       try {
         const response = await axios.post(
-          `http://localhost:8080/addTripToUser/${router.query.id}`,
+          `https://trippy-jt62.onrender.com/addTripToUser/${router.query.id}`,
           {},
           {
             headers: {
@@ -130,7 +130,7 @@ export default function Trip() {
     const getTrip = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/trip/${router.query.id}`
+          `https://trippy-jt62.onrender.com/trip/${router.query.id}`
         );
         setTrip(response.data.trip[0]);
       } catch (error) {

@@ -39,7 +39,7 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/addTrip",
+        "https://trippy-jt62.onrender.com/addTrip",
         formData
       );
 

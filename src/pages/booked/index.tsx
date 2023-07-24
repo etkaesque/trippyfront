@@ -44,7 +44,7 @@ export default function Page() {
             if(jwt_token) {
                 
             const response = await axios.get(
-                "http://localhost:8080/userTrips",
+                "https://trippy-jt62.onrender.com/userTrips",
                 {
                     headers: {
                     authorization: jwt_token

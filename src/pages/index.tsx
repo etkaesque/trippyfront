@@ -64,7 +64,7 @@ export default function Home({data}: {data: tripType[]}) {
 
 export async function getServerSideProps(){
 
-  const response = await axios.get("http://localhost:8080/trips")
+  const response = await axios.get("https://trippy-jt62.onrender.com/trips")
   const data = response.data.trips
   console.log(data)
 
